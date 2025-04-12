@@ -4,11 +4,11 @@ import requests
 app = Flask(__name__)
 
 # TODO: Hier deine echten Daten einsetzen!
-IOTC_API_TOKEN = "DEIN_ARDUINO_API_KEY"
-THING_ID = "DEINE_THING_ID"
-PROP_TEMP = "PROPERTY_ID_TEMPERATUR"
-PROP_HUM = "PROPERTY_ID_HUMIDITY"
-PROP_PRESS = "PROPERTY_ID_PRESSURE"
+IOTC_API_TOKEN = "bwWzODc2fIv7oIjo2MJ0zrH2Cuc8BN3SzB8mtykrXOxSndbkharPSgrLODS77uSZS"
+THING_ID = "94d04d01-fd23-42f5-8010-f690b7932a5f"
+PROP_TEMP = "5588027f-e45f-476d-97cf-9c9b07cd25d8"
+PROP_HUM = "1284aa1c-367a-4153-9542-887c87c76d67"
+PROP_PRESS = "8e0a33ea-bc4d-4d5e-ab6b-dfef5c5d50d5"
 
 def send_to_arduino(property_id, value):
     url = f"https://api2.arduino.cc/iot/v2/things/{THING_ID}/properties/{property_id}/publish"
