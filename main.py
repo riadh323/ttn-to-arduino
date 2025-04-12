@@ -22,15 +22,19 @@ def send_to_arduino(property_id, value):
 
 @app.route("/ttn-data", methods=["POST"])
 def webhook():
-    data = request.get_json()
+    print("📡 Webhook received!")
     try:
+        data = request.get_json()
+        print("📦 Payload from TTN:", data)
+
         payload = data["uplink_message"]["decoded_payload"]
         send_to_arduino(PROP_TEMP, payload.get("temperature"))
         send_to_arduino(PROP_HUM, payload.get("humidity"))
         send_to_arduino(PROP_PRESS, payload.get("pressure"))
     except Exception as e:
-        print("Fehler:", e)
+        print("❌ Fehler beim Verarbeiten des Webhooks:", e)
     return "OK", 200
+
 
 import os
 
